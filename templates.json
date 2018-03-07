@@ -6,6 +6,7 @@
     "categories": ["docker"],
     "platform": "linux",
     "logo": "https://c1.staticflickr.com/9/8424/29092425475_efcdbfcbec_o.png",
+    "privileged": true,
     "image": "opensourcefoundries/dump1090:latest",
     "ports": [
       "8080/tcp"
