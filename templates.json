@@ -21,8 +21,11 @@
     "title": "leshan",
     "description": "Eclipse Foundation's Leshan Server for LWM2M",
     "categories": ["IoT Gateway"],
-    "network": "host",
-    "ports": ["8081/tcp"],
+    "ports": [
+      "8081/tcp",
+      "5683/udp",
+      "5684/udp"
+    ],
     "platform": "linux",
     "image": "opensourcefoundries/leshan:latest",
     "restart_policy": "unless-stopped",
