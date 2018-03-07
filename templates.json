@@ -9,6 +9,7 @@
     "image": "opensourcefoundries/dump1090:latest",
     "ports": [
       "8080/tcp"
-    ]
+    ],
+    "volumes": ["/dev/bus/usb"]
   }
 ]
