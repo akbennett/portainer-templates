@@ -5,7 +5,6 @@
     "description": "Dump1090 server",
     "categories": ["docker"],
     "platform": "linux",
-    "logo": "https://c1.staticflickr.com/9/8424/29092425475_efcdbfcbec_o.png",
     "privileged": true,
     "image": "opensourcefoundries/dump1090:latest",
     "ports": ["8080/tcp"],
@@ -23,7 +22,6 @@
     "description": "Bluetooth low-energy device server",
     "categories": ["IoT Gateway"],
     "platform": "linux",
-    "logo": "https://foundries.io/static/img/logo.png",
     "image": "opensourcefoundries/bt-joiner:latest",
     "restart_policy": "unless-stopped",
     "volumes": [
@@ -41,10 +39,6 @@
     "platform": "linux",
     "logo": "https://cloudinovasi.id/assets/img/logos/nginx.png",
     "image": "nginx:latest",
-    "ports": [
-      "80/tcp",
-      "443/tcp"
-    ],
     "command": "nginx-debug -g 'daemon off;'",
     "network": "host",
     "restart_policy": "unless-stopped",
