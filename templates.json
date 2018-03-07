@@ -10,6 +10,6 @@
     "ports": [
       "8080/tcp"
     ],
-    "volumes": ["/dev/bus/usb"]
+    "volumes": ["/dev/bus/usb:/dev/bus/usb"]
   }
 ]
