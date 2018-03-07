@@ -10,8 +10,9 @@
     "image": "opensourcefoundries/dump1090:latest",
     "ports": [
       {
-        "host": "80",
-        "container": "8080/tcp"
+        "host": 80,
+        "container": 8080,
+        "protocol": "tcp"
       }
     ],
     "volumes": [
