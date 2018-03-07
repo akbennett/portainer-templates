@@ -9,10 +9,49 @@
     "privileged": true,
     "image": "opensourcefoundries/dump1090:latest",
     "ports": ["8080/tcp"],
+    "restart_policy": "unless-stopped",
     "volumes": [
       {
         "container": "/dev/bus/usb",
         "bind": "/dev/bus/usb"
+      }
+    ]
+  },
+  {
+    "type": "container",
+    "title": "bt-joiner",
+    "description": "Bluetooth low-energy device server",
+    "categories": ["IoT Gateway"],
+    "platform": "linux",
+    "logo": "https://foundries.io/static/img/logo.png",
+    "image": "opensourcefoundries/bt-joiner:latest",
+    "restart_policy": "unless-stopped",
+    "volumes": [
+      {
+        "container": "/etc/bluetooth/bluetooth_6lowpand.conf",
+        "bind": "/home/osf/bluetooth_6lowpand.conf"
+      }
+    ]
+  },
+  {
+    "type": "container",
+    "title": "Nginx CoAP Proxy",
+    "description": "CoAP Proxy",
+    "categories": ["IoT Gateway"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/nginx.png",
+    "image": "nginx:latest",
+    "ports": [
+      "80/tcp",
+      "443/tcp"
+    ],
+    "command": "nginx-debug -g 'daemon off;'",
+    "network": "host",
+    "restart_policy": "unless-stopped",
+    "volumes": [
+      {
+        "container":"/etc/nginx/nginx.conf",
+        "bind": "/home/osf/nginx-lwm2m.conf"
       }
     ]
   }
