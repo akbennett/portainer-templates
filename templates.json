@@ -30,12 +30,6 @@
         "name": "LESHAN_ARGS",
         "set": "-wp 8081"
       }
-    ],
-    "volumes": [
-      {
-        "container": "/etc/bluetooth/bluetooth_6lowpand.conf",
-        "bind": "/home/osf/bluetooth_6lowpand.conf"
-      }
     ]
   },
   {
