@@ -8,7 +8,7 @@
     "logo": "https://c1.staticflickr.com/9/8424/29092425475_efcdbfcbec_o.png",
     "image": "opensourcefoundries/dump1090:latest",
     "ports": [
-      "80:8080/tcp"
+      "8080/tcp"
     ]
   }
 ]
