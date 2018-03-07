@@ -18,6 +18,28 @@
   },
   {
     "type": "container",
+    "title": "leshan",
+    "description": "Eclipse Foundation's Leshan Server for LWM2M",
+    "categories": ["IoT Gateway"],
+    "network": "host",
+    "platform": "linux",
+    "image": "opensourcefoundries/leshan:latest",
+    "restart_policy": "unless-stopped",
+    "env" : [
+      {
+        "name": "LESHAN_ARGS",
+        "set": "-wp 8081"
+      }
+    ],
+    "volumes": [
+      {
+        "container": "/etc/bluetooth/bluetooth_6lowpand.conf",
+        "bind": "/home/osf/bluetooth_6lowpand.conf"
+      }
+    ]
+  },
+  {
+    "type": "container",
     "title": "bt-joiner",
     "description": "Bluetooth low-energy device server",
     "categories": ["IoT Gateway"],
