@@ -9,7 +9,10 @@
     "privileged": true,
     "image": "opensourcefoundries/dump1090:latest",
     "ports": [
-      "8080/tcp"
+      {
+        "host": "80",
+        "container": "8080/tcp"
+      }
     ],
     "volumes": [
       {
