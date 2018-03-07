@@ -1,7 +1,7 @@
 [
   {
     "type": "container",
-    "title": "Registry",
+    "title": "Dump1090",
     "description": "Dump1090 server",
     "categories": ["docker"],
     "platform": "linux",
