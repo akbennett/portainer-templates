@@ -3,7 +3,7 @@
     "type": "container",
     "title": "Dump1090",
     "description": "Dump1090 server",
-    "categories": ["docker"],
+    "categories": ["Demonstrations"],
     "platform": "linux",
     "privileged": true,
     "image": "opensourcefoundries/dump1090:latest",
@@ -20,7 +20,7 @@
     "type": "container",
     "title": "leshan",
     "description": "Eclipse Foundation's Leshan Server for LWM2M",
-    "categories": ["IoT Gateway"],
+    "categories": ["Device Management"],
     "network": "bridge",
     "ports": [
       "8081/tcp",
@@ -39,10 +39,26 @@
   },
   {
     "type": "container",
+    "title": "hawkbit",
+    "description": "Eclipse Foundation's Hawkbit OTA Server",
+    "categories": ["Device Management"],
+    "network": "bridge",
+    "ports": [
+      "8081/tcp",
+      "5683/udp",
+      "5684/udp"
+    ],
+    "platform": "linux",
+    "image": "opensourcefoundries/hawkbit-update-server:latest",
+    "restart_policy": "unless-stopped"
+  },
+  {
+    "type": "container",
     "title": "bt-joiner",
     "description": "Bluetooth low-energy device server",
     "categories": ["IoT Gateway"],
     "platform": "linux",
+    "privileged": true,
     "image": "opensourcefoundries/bt-joiner:latest",
     "restart_policy": "unless-stopped",
     "volumes": [
@@ -54,12 +70,63 @@
   },
   {
     "type": "container",
+    "title": "Mosquitto",
+    "description": "Mosquitto MQTT Broker",
+    "categories": ["IoT Gateway"],
+    "platform": "linux",
+    "image": "opensourcefoundries/mosquitto:latest",
+    "restart_policy": "unless-stopped",
+    "volumes": [
+      {
+        "container": "/etc/mosquitto/conf.d/mosquitto.conf",
+        "bind": "/home/osf/mosquitto.conf"
+      }
+    ]
+  },
+  {
+    "type": "container",
+    "title": "Nginx IPv6/IPv5 Proxy",
+    "description": "CoAP Proxy",
+    "categories": ["IoT Gateway"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/nginx.png",
+    "image": "nginx:latest",
+    "command": "nginx-debug -g 'daemon off;'",
+    "network": "host",
+    "restart_policy": "unless-stopped",
+    "volumes": [
+      {
+        "container":"/etc/nginx/nginx.conf",
+        "bind": "/home/osf/nginx-http-proxy.conf"
+      }
+    ]
+  },
+  {
+    "type": "container",
     "title": "Nginx CoAP Proxy",
     "description": "CoAP Proxy",
     "categories": ["IoT Gateway"],
     "platform": "linux",
     "logo": "https://cloudinovasi.id/assets/img/logos/nginx.png",
     "image": "nginx:latest",
+    "command": "nginx-debug -g 'daemon off;'",
+    "network": "host",
+    "restart_policy": "unless-stopped",
+    "volumes": [
+      {
+        "container":"/etc/nginx/nginx.conf",
+        "bind": "/home/osf/nginx-lwm2m.conf"
+      }
+    ]
+  },
+  {
+    "type": "container",
+    "title": "CoAP HTTP Proxy",
+    "description": "Californium CoAP-HTTP proxy container",
+    "categories": ["IoT Gateway"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/nginx.png",
+    "image": "opensourcefoundries:cf-proxy-coap-http",
     "command": "nginx-debug -g 'daemon off;'",
     "network": "host",
     "restart_policy": "unless-stopped",
