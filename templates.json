@@ -53,85 +53,16 @@
     "restart_policy": "unless-stopped"
   },
   {
-    "type": "container",
-    "title": "bt-joiner",
-    "description": "Bluetooth low-energy device server",
-    "categories": ["IoT Gateway"],
+    "type": "stack",
+    "title": "big",
+    "name": "big-gateway",
+    "description": "The OSF Basic Internet Gateway",
+    "note": "This deploys a mqtt-broker, http-proxy, coap-proxy, californium-coap-http-proxy and the bluetooth device joiner",
+    "categories": ["IoT"],
     "platform": "linux",
-    "privileged": true,
-    "image": "opensourcefoundries/bt-joiner:latest",
-    "restart_policy": "unless-stopped",
-    "volumes": [
-      {
-        "container": "/etc/bluetooth/bluetooth_6lowpand.conf",
-        "bind": "/home/osf/bluetooth_6lowpand.conf"
-      }
-    ]
-  },
-  {
-    "type": "container",
-    "title": "Mosquitto",
-    "description": "Mosquitto MQTT Broker",
-    "categories": ["IoT Gateway"],
-    "platform": "linux",
-    "image": "opensourcefoundries/mosquitto:latest",
-    "restart_policy": "unless-stopped",
-    "volumes": [
-      {
-        "container": "/etc/mosquitto/conf.d/mosquitto.conf",
-        "bind": "/home/osf/mosquitto.conf"
-      }
-    ]
-  },
-  {
-    "type": "container",
-    "title": "Nginx IPv6/IPv5 Proxy",
-    "description": "CoAP Proxy",
-    "categories": ["IoT Gateway"],
-    "platform": "linux",
-    "image": "nginx:latest",
-    "command": "nginx-debug -g 'daemon off;'",
-    "network": "host",
-    "restart_policy": "unless-stopped",
-    "volumes": [
-      {
-        "container":"/etc/nginx/nginx.conf",
-        "bind": "/home/osf/nginx-http-proxy.conf"
-      }
-    ]
-  },
-  {
-    "type": "container",
-    "title": "Nginx CoAP Proxy",
-    "description": "CoAP Proxy",
-    "categories": ["IoT Gateway"],
-    "platform": "linux",
-    "image": "nginx:latest",
-    "command": "nginx-debug -g 'daemon off;'",
-    "network": "host",
-    "restart_policy": "unless-stopped",
-    "volumes": [
-      {
-        "container":"/etc/nginx/nginx.conf",
-        "bind": "/home/osf/nginx-lwm2m.conf"
-      }
-    ]
-  },
-  {
-    "type": "container",
-    "title": "CoAP HTTP Proxy",
-    "description": "Californium CoAP-HTTP proxy container",
-    "categories": ["IoT Gateway"],
-    "platform": "linux",
-    "image": "opensourcefoundries:cf-proxy-coap-http",
-    "command": "nginx-debug -g 'daemon off;'",
-    "network": "host",
-    "restart_policy": "unless-stopped",
-    "volumes": [
-      {
-        "container":"/etc/nginx/nginx.conf",
-        "bind": "/home/osf/nginx-lwm2m.conf"
-      }
-    ]
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Logic-gate-and-de.png",
+    "repository": {
+      "url": "https://github.com/akbennett/big-gateway",
+      "stackfile": "big-stack.yml"
   }
 ]
