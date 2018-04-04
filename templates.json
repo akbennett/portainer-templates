@@ -51,19 +51,5 @@
     "platform": "linux",
     "image": "opensourcefoundries/hawkbit-update-server:latest",
     "restart_policy": "unless-stopped"
-  },
-  {
-    "type": "stack",
-    "title": "big",
-    "name": "big-gateway",
-    "description": "The OSF Basic Internet Gateway",
-    "note": "This deploys a mqtt-broker, http-proxy, coap-proxy, californium-coap-http-proxy and the bluetooth device joiner",
-    "categories": ["IoT"],
-    "platform": "linux",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Logic-gate-and-de.png",
-    "repository": {
-      "url": "https://github.com/akbennett/big-gateway",
-      "stackfile": "big-stack.yml"
-    }
   }
 ]
