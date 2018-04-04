@@ -64,5 +64,6 @@
     "repository": {
       "url": "https://github.com/akbennett/big-gateway",
       "stackfile": "big-stack.yml"
+    }
   }
 ]
